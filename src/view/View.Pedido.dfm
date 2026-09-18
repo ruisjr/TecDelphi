@@ -1,7 +1,8 @@
 object frmPedido: TfrmPedido
   Left = 0
   Top = 0
-  Caption = 'TecDelphi'
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'TecDelphi - Manuten'#231#227'o de Pedidos'
   ClientHeight = 673
   ClientWidth = 844
   Color = clBtnFace
@@ -13,9 +14,12 @@ object frmPedido: TfrmPedido
   Font.Name = 'Segoe UI'
   Font.Style = []
   KeyPreview = True
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
   TextHeight = 15
-  object grpDadosPedido: TGroupBox
+  object grbDadosPedido: TGroupBox
     Left = 0
     Top = 40
     Width = 844
@@ -26,38 +30,38 @@ object frmPedido: TfrmPedido
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'Segoe UI'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
     ExplicitTop = 35
     object Label1: TLabel
       Left = 10
       Top = 26
-      Width = 97
+      Width = 93
       Height = 17
       Caption = 'N'#250'mero Pedido'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
       Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
+      Font.Style = []
       ParentFont = False
     end
     object Label5: TLabel
       Left = 713
       Top = 26
-      Width = 50
+      Width = 48
       Height = 17
       Caption = 'Emiss'#227'o'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
       Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
+      Font.Style = []
       ParentFont = False
     end
     object sbPesquisaPedido: TSpeedButton
-      Left = 113
+      Left = 109
       Top = 21
       Width = 23
       Height = 22
@@ -130,9 +134,10 @@ object frmPedido: TfrmPedido
         FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8E8E8B2
         B2B28E8E8E8080808080808E8E8EB3B3B3E8E8E8FFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000}
+      OnClick = sbPesquisaPedidoClick
     end
     object edtNumeroPedido: TEdit
-      Left = 10
+      Left = 3
       Top = 49
       Width = 120
       Height = 25
@@ -144,6 +149,7 @@ object frmPedido: TfrmPedido
       NumbersOnly = True
       ParentFont = False
       TabOrder = 0
+      OnKeyDown = edtNumeroPedidoKeyDown
     end
     object edtDataEmissao: TDateTimePicker
       Left = 713
@@ -161,7 +167,7 @@ object frmPedido: TfrmPedido
       TabOrder = 1
     end
   end
-  object grpDadosCliente: TGroupBox
+  object grbDadosCliente: TGroupBox
     Left = 0
     Top = 124
     Width = 844
@@ -172,61 +178,60 @@ object frmPedido: TfrmPedido
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'Segoe UI'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 84
-    ExplicitWidth = 842
+    ExplicitTop = 120
     object Label2: TLabel
       Left = 136
       Top = 25
-      Width = 37
+      Width = 36
       Height = 17
       Caption = 'Nome'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
       Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
+      Font.Style = []
       ParentFont = False
     end
     object Label3: TLabel
       Left = 477
       Top = 26
-      Width = 42
+      Width = 41
       Height = 17
       Caption = 'Cidade'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
       Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
+      Font.Style = []
       ParentFont = False
     end
     object Label4: TLabel
       Left = 783
       Top = 26
-      Width = 16
+      Width = 15
       Height = 17
       Caption = 'UF'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
       Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
+      Font.Style = []
       ParentFont = False
     end
     object lblClienteCod: TLabel
-      Left = 10
+      Left = 11
       Top = 25
-      Width = 44
+      Width = 43
       Height = 17
       Caption = 'C'#243'digo'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
       Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
+      Font.Style = []
       ParentFont = False
     end
     object sbPesquisaCliente: TSpeedButton
@@ -362,267 +367,6 @@ object frmPedido: TfrmPedido
       OnKeyDown = edtClienteCodKeyDown
     end
   end
-  object pnlGrid: TPanel
-    Left = 0
-    Top = 204
-    Width = 844
-    Height = 469
-    Align = alClient
-    BevelInner = bvRaised
-    BevelOuter = bvLowered
-    TabOrder = 2
-    ExplicitTop = 164
-    ExplicitWidth = 842
-    ExplicitHeight = 360
-    object pnlPedidoBotoes: TPanel
-      AlignWithMargins = True
-      Left = 5
-      Top = 5
-      Width = 834
-      Height = 41
-      Align = alTop
-      BevelOuter = bvNone
-      TabOrder = 0
-      ExplicitWidth = 832
-      object btnNovoProduto: TSpeedButton
-        Left = 608
-        Top = 5
-        Width = 220
-        Height = 28
-        Hint = 'Pressione F10 para incluir novo registro'
-        Caption = 'Inserir | Atualizar Item'
-        Flat = True
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        Glyph.Data = {
-          56080000424D560800000000000036000000280000001A0000001A0000000100
-          1800000000002008000074120000741200000000000000000000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF7E7E7E5B5B5B5B5B5B808080FFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
-          5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
-          5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
-          5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
-          5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFF7E7E7E5B5B5B5B5B5B5B5B5B5B
-          5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B
-          5B5B5B5B5B5B5B5B5B5B5B5B808080FFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFF5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B
-          5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5BFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5B5B
-          5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B
-          5B5B5B5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFF7B7B7B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B
-          5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B7C7C7CFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
-          5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
-          5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
-          5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7B7B5B5B
-          5B5B5B5B7C7C7CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000}
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = True
-      end
-    end
-    object grdPedidoItens: TDBGrid
-      AlignWithMargins = True
-      Left = 5
-      Top = 52
-      Width = 834
-      Height = 371
-      Align = alClient
-      DataSource = DsPedidos
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-      TabOrder = 1
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -12
-      TitleFont.Name = 'Segoe UI'
-      TitleFont.Style = []
-      OnKeyDown = grdPedidoItensKeyDown
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'codigo_produto'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ReadOnly = True
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 100
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'descricao'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ReadOnly = True
-          Title.Caption = 'Descri'#231#227'o'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 315
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'quantidade'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 120
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'vlr_unitario'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 120
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'vlr_total'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          Title.Caption = 'Vlr. Total'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = []
-          Width = 150
-          Visible = True
-        end>
-    end
-    object Panel1: TPanel
-      Left = 2
-      Top = 426
-      Width = 840
-      Height = 41
-      Align = alBottom
-      BevelOuter = bvNone
-      TabOrder = 2
-      ExplicitLeft = -8
-      ExplicitTop = 644
-      ExplicitWidth = 844
-      object Label6: TLabel
-        AlignWithMargins = True
-        Left = 511
-        Top = 3
-        Width = 72
-        Height = 35
-        Align = alRight
-        AutoSize = False
-        Caption = 'Total:'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
-        ExplicitLeft = 504
-        ExplicitHeight = 37
-      end
-      object lblTotal: TLabel
-        AlignWithMargins = True
-        Left = 589
-        Top = 3
-        Width = 248
-        Height = 35
-        Align = alRight
-        Alignment = taRightJustify
-        AutoSize = False
-        Caption = 'R$ 0,00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
-        ExplicitLeft = 592
-        ExplicitTop = 0
-        ExplicitHeight = 41
-      end
-    end
-  end
   object Panel2: TPanel
     Left = 0
     Top = 0
@@ -630,7 +374,7 @@ object frmPedido: TfrmPedido
     Height = 40
     Align = alTop
     BevelOuter = bvNone
-    TabOrder = 3
+    TabOrder = 2
     object btnNovoPedido: TSpeedButton
       Left = 5
       Top = 6
@@ -890,42 +634,458 @@ object frmPedido: TfrmPedido
       OnClick = btnSalvarPedidoClick
     end
   end
-  object cdsPedidos: TClientDataSet
+  object gpbItens: TGroupBox
+    Left = 0
+    Top = 204
+    Width = 844
+    Height = 469
+    Align = alClient
+    Caption = 'Itens'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 3
+    ExplicitTop = 203
+    object pnlGrid: TPanel
+      Left = 2
+      Top = 19
+      Width = 840
+      Height = 448
+      Align = alClient
+      BevelInner = bvRaised
+      BevelOuter = bvLowered
+      TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = 164
+      ExplicitWidth = 842
+      ExplicitHeight = 360
+      object pnlPedidoBotoes: TPanel
+        AlignWithMargins = True
+        Left = 5
+        Top = 5
+        Width = 830
+        Height = 56
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 0
+        object btnNovoProduto: TSpeedButton
+          Left = 477
+          Top = 28
+          Width = 220
+          Height = 28
+          Hint = 'Pressione F10 para incluir novo registro'
+          Caption = 'Inserir | Atualizar Item'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Glyph.Data = {
+            56080000424D560800000000000036000000280000001A0000001A0000000100
+            1800000000002008000074120000741200000000000000000000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF7E7E7E5B5B5B5B5B5B808080FFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
+            5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
+            5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
+            5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
+            5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFF7E7E7E5B5B5B5B5B5B5B5B5B5B
+            5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B
+            5B5B5B5B5B5B5B5B5B5B5B5B808080FFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFF5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B
+            5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5BFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5B5B
+            5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B
+            5B5B5B5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFF7B7B7B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B
+            5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B7C7C7CFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
+            5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
+            5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B
+            5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFF5B5B5B5B5B5B5B5B5B5B5B5BFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7B7B7B5B5B
+            5B5B5B5B7C7C7CFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000}
+          ParentFont = False
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = btnNovoProdutoClick
+        end
+        object Label7: TLabel
+          Left = 10
+          Top = 8
+          Width = 47
+          Height = 17
+          Caption = 'Produto'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object Label8: TLabel
+          Left = 136
+          Top = 8
+          Width = 57
+          Height = 17
+          Caption = 'Descri'#231#227'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object sbPesquisaProduto: TSpeedButton
+          Left = 63
+          Top = 3
+          Width = 23
+          Height = 22
+          Flat = True
+          Glyph.Data = {
+            56080000424D560800000000000036000000280000001A0000001A0000000100
+            1800000000002008000074120000741200000000000000000000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1F1F194949483
+            8383D4D4D4FFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFF1F1F17777775B5B5B5B5B5B5E5E5ED0D0D00000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0F0F07777775B5B5B5B5B5B5B
+            5B5B5B5B5B7E7E7E0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            F0F0F07676765B5B5B5B5B5B5B5B5B5B5B5B5B5B5B9292920000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFF0F0F07676765B5B5B5B5B5B5B5B5B5B5B5B5B
+            5B5B767676F0F0F00000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAFAFA797979
+            5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B777777F0F0F0FFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFE8E8E8B2B2B28E8E8E8080808080808E8E8EB3B3
+            B3E8E8E8FFFFFFFFFFFFDBDBDB5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B777777F0
+            F0F0FFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFEBEBEB9494945C5C5C5B
+            5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5C5C5C949494ECECECD6D6D65B5B5B
+            5B5B5B5B5B5B5B5B5B777777F1F1F1FFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFCBCBCB6464645B5B5B777777B7B7B7E3E3E3F2F2F2F2F2F2E3E3E3B6B6
+            B67676765B5B5B6464646666665B5B5B5D5D5D5B5B5B7B7B7BF1F1F1FFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFC9C9C95C5C5C5F5F5FBABABAFDFDFDFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFDB8B8B85D5D5D5B5B5B636363
+            D9D9D9E1E1E1FCFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFE6E6E6
+            6262625E5E5ED1D1D1FFFFFFFCFCFCC4C4C49090907C7C7C8E8E8EB6B6B6F9F9
+            F9FFFFFFFFFFFFD1D1D15E5E5E626262E7E7E7FFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFF8F8F8F5B5B5BB7B7B7FFFFFFECECEC7878785B
+            5B5B5F5F5F979797C8C8C8DBDBDBEBEBEBFFFFFFFFFFFFFFFFFFB4B4B45B5B5B
+            909090FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000E7E7E75B5B5B
+            767676FDFDFDFCFCFC7A7A7A5B5B5B7E7E7EE8E8E8FFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFCFCFC7575755C5C5CE8E8E8FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000B6B6B65B5B5BB6B6B6FFFFFFBDBDBD5B5B5B838383FA
+            FAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB4B4B4
+            5B5B5BB8B8B8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00009292925B5B5B
+            E4E4E4FFFFFF868686656565F0F0F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFE3E3E35B5B5B949494FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF00008181815B5B5BF7F7F7FFFFFF737373ADADADFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F6
+            5B5B5B828282FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00008282825B5B5B
+            F7F7F7FFFFFF818181E3E3E3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F65B5B5B828282FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF00009292925B5B5BE4E4E4FFFFFFACACACFEFEFEFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE2E2E2
+            5B5B5B949494FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000B2B2B25B5B5B
+            B9B9B9FFFFFFF4F4F4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFB7B7B75B5B5BB4B4B4FFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000E7E7E75B5B5B777777FEFEFEFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFDFD767676
+            5C5C5CE8E8E8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFF8F8F8F
+            5B5B5BBDBDBDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFBBBBBB5B5B5B909090FFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFE6E6E66262625F5F5FD3D3D3FFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD1D1D15F5F5F636363
+            E7E7E7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            C9C9C95C5C5C5F5F5FBABABAFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFDFDFDB8B8B85E5E5E5C5C5CCACACAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFC8C8C86161615B5B5B777777B7
+            B7B7E3E3E3F2F2F2F2F2F2E3E3E3B6B6B67676765B5B5B626262C9C9C9FFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF
+            FFFFFFFFFFFFE5E5E58F8F8F5C5C5C5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B5B
+            5B5C5C5C909090E5E5E5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE8E8E8B2
+            B2B28E8E8E8080808080808E8E8EB3B3B3E8E8E8FFFFFFFFFFFFFFFFFFFFFFFF
+            FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000}
+          OnClick = sbPesquisaProdutoClick
+        end
+        object edtProdutoCodigo: TEdit
+          Left = 10
+          Top = 31
+          Width = 120
+          Height = 25
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          OnKeyDown = edtProdutoCodigoKeyDown
+        end
+        object edtProdutoNome: TEdit
+          Left = 136
+          Top = 31
+          Width = 335
+          Height = 25
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 1
+        end
+      end
+      object grdPedidoItens: TDBGrid
+        AlignWithMargins = True
+        Left = 5
+        Top = 67
+        Width = 830
+        Height = 335
+        Align = alClient
+        DataSource = DsProdutos
+        Options = [dgEditing, dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -13
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = [fsBold]
+        OnKeyDown = grdPedidoItensKeyDown
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'codigo_produto'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ReadOnly = True
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Style = []
+            Width = 100
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'descricao'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ReadOnly = True
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Style = []
+            Width = 300
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'quantidade'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Style = []
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'vlr_unitario'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Style = []
+            Width = 120
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'vlr_total'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ReadOnly = True
+            Title.Caption = 'Vlr. Total'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -13
+            Title.Font.Name = 'Segoe UI'
+            Title.Font.Style = []
+            Width = 150
+            Visible = True
+          end>
+      end
+      object Panel1: TPanel
+        Left = 2
+        Top = 405
+        Width = 836
+        Height = 41
+        Align = alBottom
+        BevelOuter = bvNone
+        TabOrder = 2
+        ExplicitTop = 407
+        object Label6: TLabel
+          AlignWithMargins = True
+          Left = 507
+          Top = 3
+          Width = 72
+          Height = 35
+          Align = alRight
+          AutoSize = False
+          Caption = 'Total:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -27
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ExplicitLeft = 504
+          ExplicitHeight = 37
+        end
+        object lblTotal: TLabel
+          AlignWithMargins = True
+          Left = 585
+          Top = 3
+          Width = 248
+          Height = 35
+          Align = alRight
+          Alignment = taRightJustify
+          AutoSize = False
+          Caption = 'R$ 0,00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -27
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ExplicitLeft = 592
+          ExplicitTop = 0
+          ExplicitHeight = 41
+        end
+      end
+    end
+  end
+  object cdsProdutos: TClientDataSet
     Aggregates = <>
     Params = <>
-    AfterScroll = cdsPedidosAfterScroll
+    AfterOpen = cdsProdutosAfterOpen
+    AfterEdit = cdsProdutosAfterEdit
+    AfterPost = cdsProdutosAfterPost
+    AfterDelete = cdsProdutosAfterDelete
+    OnCalcFields = cdsProdutosCalcFields
     Left = 656
     Top = 520
-    object cdsPedidosid: TIntegerField
+    object cdsProdutosid: TIntegerField
       DisplayLabel = 'Id'
       FieldName = 'id'
     end
-    object cdsPedidosNumeroPedido: TStringField
+    object cdsProdutosNumeroPedido: TStringField
       DisplayLabel = 'N'#250'mero Pedido'
       FieldName = 'numero_pedido'
     end
-    object cdsPedidosCodigoProduto: TIntegerField
+    object cdsProdutosCodigoProduto: TIntegerField
       DisplayLabel = 'C'#243'd. Produto'
       FieldName = 'codigo_produto'
     end
-    object cdsPedidosQuantidade: TFloatField
+    object cdsProdutosDescricao: TStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'descricao'
+    end
+    object cdsProdutosQuantidade: TFloatField
       DisplayLabel = 'Quantidade'
       FieldName = 'quantidade'
       DisplayFormat = '#,##0.00'
     end
-    object cdsPedidosvlr_unitario: TCurrencyField
+    object cdsProdutosvlr_unitario: TCurrencyField
       DisplayLabel = 'Vlr. Unit'#225'rio'
       FieldName = 'vlr_unitario'
       DisplayFormat = '#,##0.00'
     end
-    object cdsPedidosVlrTotal: TCurrencyField
+    object cdsProdutosVlrTotal: TCurrencyField
       DisplayLabel = 'Total'
+      FieldKind = fkCalculated
       FieldName = 'vlr_total'
       DisplayFormat = '#,##0.00'
+      Calculated = True
     end
   end
-  object DsPedidos: TDataSource
-    DataSet = cdsPedidos
+  object DsProdutos: TDataSource
+    DataSet = cdsProdutos
     Left = 728
     Top = 520
   end

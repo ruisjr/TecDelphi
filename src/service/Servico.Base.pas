@@ -3,7 +3,10 @@ unit Servico.Base;
 interface
 
 uses
-  Repositorio.Interfaces;
+  {Classes de Sistema}
+   System.Generics.Collections
+  {Classes de Negócio}
+  ,Repositorio.Interfaces;
 
 Type
   TServicoBase = class

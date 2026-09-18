@@ -18,7 +18,8 @@ type
 
   public
     function Salvar(AModel: TObject): Boolean;
-    function Remover(AModel: TObject): Boolean;
+    function Remover(AModel: TObject): Boolean; overload;
+    function Remover(AID: Integer): Boolean; overload;
     function RetornarRegistro(ACod: Integer): TObject;
   end;
 
@@ -40,13 +41,18 @@ begin
   end;
 end;
 
+function TRepositorioProduto.Remover(AID: Integer): Boolean;
+begin
+
+end;
+
 function TRepositorioProduto.RetornarRegistro(ACod: Integer): TObject;
 var
   LManager: IDBManager<TProduto>;
 begin
   LManager := TDBManager<TProduto>.Create(Env.Connection);
   try
-    Result := LManager.Find;
+    Result := LManager.Find(ACod);
   finally
     LManager := Nil;
   end;
