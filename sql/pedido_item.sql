@@ -12,7 +12,7 @@ CREATE TABLE pedido_item (
 ALTER TABLE pedido_item ADD CONSTRAINT pk_pedido_item PRIMARY KEY (id);
 ALTER TABLE pedido_item ADD CONSTRAINT fk_pedido_item_np FOREIGN KEY (numero_pedido) REFERENCES pedido(numero_pedido);
 ALTER TABLE pedido_item ADD CONSTRAINT fk_pedido_item_cp FOREIGN KEY (codigo_produto) REFERENCES produto(codigo);
-
+CREATE SEQUENCE seq_pedido_item_id;
 CREATE INDEX idx_pedido_codigo_produto ON pedido_item (codigo_produto);
 
 SELECT CURRENT_DATE FROM RDB$DATABASE;
