@@ -1,4 +1,4 @@
-unit Repositorio.Pedido;
+unit Repositorio.Produto;
 
 interface
 
@@ -6,14 +6,14 @@ uses
   {Classes de Sistema}
   System.SysUtils
   {Classes de Negócio}
-  ,Model.Pedido
+  ,Model.Produto
   ,Core.Environment
   ,Core.Database.DBManager
   ,Core.Database.Interfaces
   ,Repositorio.Interfaces;
 
 type
-  TRepositorioPedido = class(TInterfacedObject, IRepositorio)
+  TRepositorioProduto = class(TInterfacedObject, IRepositorio)
   private
 
   public
@@ -24,27 +24,27 @@ type
 
 implementation
 
-function TRepositorioPedido.Remover(AModel: TObject): Boolean;
+{ TRepositorioProduto }
+
+function TRepositorioProduto.Remover(AModel: TObject): Boolean;
 var
-  LManager: IDBManager<TPedido>;
+  LManager: IDBManager<TProduto>;
 begin
   Result := False;
-  LManager := TDBManager<TPedido>.Create(Env.Connection);
+  LManager := TDBManager<TProduto>.Create(Env.Connection);
   try
-    LManager.Delete(TPedido(AModel));
+    LManager.Delete(TProduto(AModel));
     Result := True;
   finally
     LManager := Nil;
   end;
 end;
 
-{ TRepositorioPedido<T> }
-
-function TRepositorioPedido.RetornarRegistro(ACod: Integer): TObject;
+function TRepositorioProduto.RetornarRegistro(ACod: Integer): TObject;
 var
-  LManager: IDBManager<TPedido>;
+  LManager: IDBManager<TProduto>;
 begin
-  LManager := TDBManager<TPedido>.Create(Env.Connection);
+  LManager := TDBManager<TProduto>.Create(Env.Connection);
   try
     Result := LManager.Find;
   finally
@@ -52,18 +52,18 @@ begin
   end;
 end;
 
-function TRepositorioPedido.Salvar(AModel: TObject): Boolean;
+function TRepositorioProduto.Salvar(AModel: TObject): Boolean;
 var
-  LManager: IDBManager<TPedido>;
+  LManager: IDBManager<TProduto>;
 begin
   Env.Connection.StartTransaction;
   try
-    LManager := TDBManager<TPedido>.Create(Env.Connection);
+    LManager := TDBManager<TProduto>.Create(Env.Connection);
     try
-      if (TPedido(AModel).NumeroPedido > 0) then
-        LManager.Update(TPedido(AModel))
+      if (TProduto(AModel).Codigo > 0) then
+        LManager.Update(TProduto(AModel))
       else
-        LManager.Insert(TPedido(AModel));
+        LManager.Insert(TProduto(AModel));
     finally
       LManager := Nil;
     end;
@@ -73,7 +73,7 @@ begin
     on E: Exception do
     begin
       Env.Connection.RollBackTransaction;
-      raise Exception.Create('Não foi possível salvar o Pedido.');
+      raise Exception.Create('Ocorreu erro salvar o Produto.');
     end;
   end;
 

@@ -192,10 +192,4 @@ begin
   FConnection.StartTransaction;
 end;
 
-initialization
-  FRepositorioFireDac := TDBConnectionFireDac.Create;
-
-finalization
-  FRepositorioFireDac.FreeMemory;
-
 end.

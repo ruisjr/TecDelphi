@@ -1,4 +1,4 @@
-unit Repositorio.Pedido;
+unit Repositorio.Cliente;
 
 interface
 
@@ -6,14 +6,14 @@ uses
   {Classes de Sistema}
   System.SysUtils
   {Classes de Negócio}
-  ,Model.Pedido
+  ,Model.Cliente
   ,Core.Environment
   ,Core.Database.DBManager
   ,Core.Database.Interfaces
   ,Repositorio.Interfaces;
 
 type
-  TRepositorioPedido = class(TInterfacedObject, IRepositorio)
+  TRepositorioCliente = class(TInterfacedObject, IRepositorio)
   private
 
   public
@@ -24,27 +24,27 @@ type
 
 implementation
 
-function TRepositorioPedido.Remover(AModel: TObject): Boolean;
+{ TRepositorioCliente }
+
+function TRepositorioCliente.Remover(AModel: TObject): Boolean;
 var
-  LManager: IDBManager<TPedido>;
+  LManager: IDBManager<TCliente>;
 begin
   Result := False;
-  LManager := TDBManager<TPedido>.Create(Env.Connection);
+  LManager := TDBManager<TCliente>.Create(Env.Connection);
   try
-    LManager.Delete(TPedido(AModel));
+    LManager.Delete(TCliente(AModel));
     Result := True;
   finally
     LManager := Nil;
   end;
 end;
 
-{ TRepositorioPedido<T> }
-
-function TRepositorioPedido.RetornarRegistro(ACod: Integer): TObject;
+function TRepositorioCliente.RetornarRegistro(ACod: Integer): TObject;
 var
-  LManager: IDBManager<TPedido>;
+  LManager: IDBManager<TCliente>;
 begin
-  LManager := TDBManager<TPedido>.Create(Env.Connection);
+  LManager := TDBManager<TCliente>.Create(Env.Connection);
   try
     Result := LManager.Find;
   finally
@@ -52,18 +52,18 @@ begin
   end;
 end;
 
-function TRepositorioPedido.Salvar(AModel: TObject): Boolean;
+function TRepositorioCliente.Salvar(AModel: TObject): Boolean;
 var
-  LManager: IDBManager<TPedido>;
+  LManager: IDBManager<TCliente>;
 begin
   Env.Connection.StartTransaction;
   try
-    LManager := TDBManager<TPedido>.Create(Env.Connection);
+    LManager := TDBManager<TCliente>.Create(Env.Connection);
     try
-      if (TPedido(AModel).NumeroPedido > 0) then
-        LManager.Update(TPedido(AModel))
+      if (TCliente(AModel).Codigo > 0) then
+        LManager.Update(TCliente(AModel))
       else
-        LManager.Insert(TPedido(AModel));
+        LManager.Insert(TCliente(AModel));
     finally
       LManager := Nil;
     end;
@@ -73,7 +73,7 @@ begin
     on E: Exception do
     begin
       Env.Connection.RollBackTransaction;
-      raise Exception.Create('Não foi possível salvar o Pedido.');
+      raise Exception.Create('Não foi possível salvar o Cliente.');
     end;
   end;
 
@@ -81,3 +81,4 @@ begin
 end;
 
 end.
+
