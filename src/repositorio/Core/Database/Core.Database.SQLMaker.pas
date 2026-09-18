@@ -81,7 +81,7 @@ end;
 
 function TSQLMaker<T>.GetNextID: String;
 begin
-  FSQL.AppendLine(Format('SELECT pg_sequence_last_value(%s)', [TDBRtti<T>.New.Sequence]));
+  FSQL.AppendLine(Format('SELECT NEXT VALUE FOR %s FROM RDB$DATABASE', [TDBRtti<T>.New.Sequence]));
   Result := FSQL.ToString;
 end;
 

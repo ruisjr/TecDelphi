@@ -40,7 +40,8 @@ type
     function GetNextID: Integer;
     function Find(Id: Integer): T; overload;
     function Find: T; overload;
-    function FindAll: TObjectList<T>;
+    function FindAll: TObjectList<T>; overload;
+    function FindAll(Id: Integer): TObjectList<T>; overload;
   end;
 
 implementation
@@ -117,6 +118,20 @@ begin
   try
     LDataSet := LQuery.ToDataSet(TSQLMaker<T>.New.Where(FCriterion).Select);
     Result := TDBRtti<T>.New.DataSetToEntity(LDataSet);
+  finally
+    LQuery.FreeMemory;
+  end;
+end;
+
+function TDBManager<T>.FindAll(Id: Integer): TObjectList<T>;
+var
+  LQuery: IDBQuery;
+  LDataSet: TDataSet;
+begin
+  LQuery := FDBConnection.CreateQuery;
+  try
+    LDataSet := LQuery.ToDataSet(TSQLMaker<T>.New.WhereID(Id).Select);
+    Result := TDBRtti<T>.New.DataSetToEntityList(LDataSet);
   finally
     LQuery.FreeMemory;
   end;

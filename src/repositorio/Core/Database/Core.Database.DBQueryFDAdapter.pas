@@ -121,7 +121,7 @@ begin
   FQuery.Prepare;
 
   FQuery.Open;
-  Result := TDataSet(FQuery).Fields[0].AsInteger + 1;
+  Result := TDataSet(FQuery).Fields[0].AsInteger;
 end;
 
 function TDBQueryPGAdapter.ToDataSet(pSQL: String): TDataSet;

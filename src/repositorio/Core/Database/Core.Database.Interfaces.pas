@@ -49,7 +49,8 @@ type
     function GetNextID: Integer;
     function Find: T; overload;
     function Find(Id: Integer): T; overload;
-    function FindAll: TObjectList<T>;
+    function FindAll: TObjectList<T>; overload;
+    function FindAll(Id: Integer): TObjectList<T>; overload;
     function Fields(AFields: string): IDBManager<T>;
     function Where(pCriteria: TCriterion): IDBManager<T>;
   end;

@@ -211,7 +211,7 @@ begin
           begin
             if LPrpRtti.IsSequence and
                pModeInsert         and
-              (LPrpRtti.GetValue(Pointer(pEntity)).AsVariant <> null) then
+              (LPrpRtti.GetValue(Pointer(pEntity)).AsVariant = null) then
               continue
             else
               Result.Add(LPrpRtti.FieldName, LPrpRtti.GetValue(Pointer(pEntity)).AsInteger);
@@ -454,7 +454,7 @@ begin
       for LAtributo in LPrpRtti.GetAttributes do
       begin
         if LAtributo is Seq then
-          Exit(QuotedStr(LPrpRtti.Sequence));
+          Exit(LPrpRtti.Sequence);
       end;
     end;
   finally
@@ -495,11 +495,13 @@ begin
         if LPrpRtti.IsIgnore then
           Continue;
 
-        if LPrpRtti.IsSequence then
-        begin
-          LSQL.Append(Format('nextval(%s) ', [QuotedStr(LPrpRtti.Sequence)]));
+//        if LPrpRtti.IsSequence then
+//        begin
+//          LSQL.Append(Format('nextval(%s) ', [QuotedStr(LPrpRtti.Sequence)]));
+//          Continue;
+//        end;
+        if not (LPrpRtti.Has<DBField>) then
           Continue;
-        end;
 
         if (LSQL.Length > 0) then
           LSQL.Append(Format(',:%s', [LPrpRtti.FieldName]))
