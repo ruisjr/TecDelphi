@@ -133,11 +133,25 @@
             <Form>frmPedido</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\src\model\model.cliente.pas"/>
-        <DCCReference Include="..\src\model\model.produto.pas"/>
-        <DCCReference Include="..\src\model\model.pedido.pas"/>
-        <DCCReference Include="..\src\repositorio\repositorio.interfaces.pas"/>
-        <DCCReference Include="..\src\repositorio\repositorio.database.firedac.pas"/>
+        <DCCReference Include="..\src\model\Model.cliente.pas"/>
+        <DCCReference Include="..\src\model\Model.produto.pas"/>
+        <DCCReference Include="..\src\model\Model.pedido.pas"/>
+        <DCCReference Include="..\src\repositorio\Repositorio.Interfaces.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Database\Core.Database.Criteria.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Database\Core.Database.DBConnectionFDAdapter.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Database\Core.Database.DBManager.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Database\Core.Database.DBQueryFDAdapter.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Database\Core.Database.DBRtti.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Database\Core.Database.DBTypes.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Database\Core.Database.Interfaces.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Database\Core.Database.RttiHelper.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Database\Core.Database.SQLMaker.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Entidades\Core.Entidade.CustomAttributes.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Entidades\Core.Entidade.ModelBase.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Core.Environment.pas"/>
+        <DCCReference Include="..\src\repositorio\Core\Core.Exceptions.pas"/>
+        <DCCReference Include="..\src\repositorio\Repositorio.Pedido.pas"/>
+        <DCCReference Include="..\src\service\Servico.Pedido.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
