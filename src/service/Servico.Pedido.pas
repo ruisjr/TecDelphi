@@ -7,28 +7,20 @@ uses
   System.SysUtils
   {Classes de Negócio}
   ,Model.Pedido
+  ,Servico.Base
   ,Repositorio.Interfaces;
 
 type
-  TServico = class
-  private
-    FRepositorio: IRepositorio;
+  TServicoPedido = class(TServicoBase)
   public
-    constructor Create(ARepositorio: IRepositorio);
-
     function ProcessarPedido(APedido: TPedido): Boolean;
   end;
 
 implementation
 
-{ TServico }
+{ TServicoPedido }
 
-constructor TServico.Create(ARepositorio: IRepositorio);
-begin
-  FRepositorio := ARepositorio;
-end;
-
-function TServico.ProcessarPedido(APedido: TPedido): Boolean;
+function TServicoPedido.ProcessarPedido(APedido: TPedido): Boolean;
 begin
   if (APedido.CodigoCliente <= 0) then
     raise Exception.Create('Informe um cliente válido.');
@@ -36,7 +28,7 @@ begin
   if (APedido.Itens.Count = 0) then
     raise Exception.Create('O pedido precisa ter pelo menos um item.');
 
-  Result := FRepositorio.Salvar(APedido);
+  Result := Self.Repositorio.Salvar(APedido);
 end;
 
 end.
